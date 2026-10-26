@@ -30,7 +30,9 @@ Create a Cloudflare Pages project by connecting this GitHub repository. Set the 
 
 In the Pages project settings, add the build environment variable `VITE_API_BASE_URL` with the public HTTPS origin of the API only, for example `https://api.example.com` (no path or trailing slash). The value is included in the public frontend bundle, so never put passwords, tokens, or other secrets in it. After the first deployment, the Pages project URL can be used as the frontend origin.
 
-The API must be publicly reachable over HTTPS and allow the exact Pages origin through its `CORS_ORIGIN` environment variable (for example, `https://your-project.pages.dev`). GitHub Pages and Cloudflare Pages host only the static frontend; the API and PostgreSQL must remain running on the backend server. Keep PostgreSQL private and do not expose port 5432 to the internet.
+The API must be publicly reachable over HTTPS and allow the exact Pages origin through its `CORS_ORIGIN` environment variable (for example, `https://your-project.pages.dev`). An HTTP API URL cannot be called safely from an HTTPS Pages site. For temporary testing without a domain, install `cloudflared` on the API server and run `cloudflared tunnel --url http://localhost:3000`; use the generated `https://*.trycloudflare.com` origin as `VITE_API_BASE_URL`. Quick Tunnels are temporary, their hostname changes when restarted, and they are intended for testing rather than production.
+
+Set `CORS_ORIGIN` on the API server to the exact Pages origin (for example, `https://manito-4sy.pages.dev`) and restart the API. GitHub Pages and Cloudflare Pages host only the static frontend; the API and PostgreSQL must remain running on the backend server. Keep PostgreSQL private and do not expose port 5432 to the internet.
 
 ## Tests and builds
 

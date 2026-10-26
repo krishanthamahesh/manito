@@ -62,11 +62,16 @@ const statusOptions=Object.entries(statusNames);
 function notifySuccess(message:string){window.dispatchEvent(new CustomEvent('manito:success',{detail:message}));}
 
 const apiBaseUrl=(import.meta.env.VITE_API_BASE_URL??'').replace(/\/+$/,'');
-function apiUrl(path:string):string{return `${apiBaseUrl}/api/v1${path}`;}
+function apiUrl(path:string):string{
+  if(window.location.hostname.endsWith('.pages.dev')&&!apiBaseUrl)throw new Error('API is not configured. Set VITE_API_BASE_URL in the Cloudflare Pages build settings and redeploy.');
+  if(window.location.protocol==='https:'&&apiBaseUrl.startsWith('http://'))throw new Error('The API URL must use HTTPS when the site is loaded over HTTPS.');
+  return `${apiBaseUrl}/api/v1${path}`;
+}
 async function api<T>(path:string,token:string|null,init:RequestInit={}):Promise<T>{
   const response=await fetch(apiUrl(path),{...init,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...init.headers}});
   const data=await response.json().catch(()=>null) as {message?:string|string[]}|null;
   if(!response.ok){const message=Array.isArray(data?.message)?data.message.join(' '):data?.message;throw new Error(message||'Request failed. Please try again.');}
+  if(data===null)throw new Error('The API returned an invalid response. Check that VITE_API_BASE_URL points to the backend API, not the frontend site.');
   return data as T;
 }
 async function uploadFile(path:string,token:string|null,file:File):Promise<{success:boolean}>{
