@@ -1,0 +1,559 @@
+:root {
+  --theme-light-accent: #267a61;
+  --theme-light-strong: #185d49;
+  --theme-light-soft: #e8f3ef;
+  --theme-dark-accent: #49a883;
+  --theme-dark-strong: #357f64;
+  --theme-dark-soft: #20372e;
+  --theme-button-text: #fff;
+  --theme-sidebar: #102722;
+  --theme-login-bg: #12352b;
+  --theme-login-highlight: #69c59d;
+  --theme-login-muted: #88b59f;
+  --theme-login-form-accent: #5e9a7e;
+  --theme-accent-outline: #90c3ad;
+  --theme-focus-shadow: color-mix(in srgb, var(--green) 8%, transparent);
+  --theme-brand-highlight: #61c69e;
+  --theme-brand-filter: none;
+  --green: var(--theme-light-accent);
+  --green-dark: var(--theme-light-strong);
+  --mint: var(--theme-light-soft);
+  --sidebar: var(--theme-sidebar);
+}
+
+html[data-color-theme="blue"] {
+  --theme-light-accent: #3d6dcc;
+  --theme-light-strong: #2c50a0;
+  --theme-light-soft: #eaf0fc;
+  --theme-dark-accent: #81a8ff;
+  --theme-dark-strong: #6388dc;
+  --theme-dark-soft: #253452;
+  --theme-sidebar: #14243e;
+  --theme-login-bg: #172b4b;
+  --theme-login-highlight: #9dbbff;
+  --theme-login-muted: #b5c7e8;
+  --theme-login-form-accent: #4f72b5;
+  --theme-accent-outline: #a9c4fa;
+  --theme-brand-highlight: #a9c4fa;
+  --theme-brand-filter: hue-rotate(60deg) saturate(1.15);
+}
+
+html[data-color-theme="violet"] {
+  --theme-light-accent: #7954b8;
+  --theme-light-strong: #5b3c91;
+  --theme-light-soft: #f1ebfb;
+  --theme-dark-accent: #b59af0;
+  --theme-dark-strong: #9476d2;
+  --theme-dark-soft: #352a4a;
+  --theme-sidebar: #211a35;
+  --theme-login-bg: #29203f;
+  --theme-login-highlight: #c2a9ff;
+  --theme-login-muted: #c9bce7;
+  --theme-login-form-accent: #7954b8;
+  --theme-accent-outline: #c4a9fa;
+  --theme-brand-highlight: #c2a9ff;
+  --theme-brand-filter: hue-rotate(103deg) saturate(1.1);
+}
+
+html[data-color-theme="amber"] {
+  --theme-light-accent: #99580f;
+  --theme-light-strong: #74420d;
+  --theme-light-soft: #fff2df;
+  --theme-dark-accent: #d7a04d;
+  --theme-dark-strong: #b68132;
+  --theme-dark-soft: #443322;
+  --theme-button-text: #1b1a17;
+  --theme-sidebar: #302315;
+  --theme-login-bg: #3d2a12;
+  --theme-login-highlight: #ffd084;
+  --theme-login-muted: #e2c39c;
+  --theme-login-form-accent: #99580f;
+  --theme-accent-outline: #e1b56e;
+  --theme-brand-highlight: #ffd084;
+  --theme-brand-filter: hue-rotate(-127deg) saturate(1.2);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  color: #e4ece8;
+  background: #111a18;
+  --ink: #e4ece8;
+  --muted: #9aa9a3;
+  --line: #2b3934;
+  --green: var(--theme-dark-accent);
+  --green-dark: var(--theme-dark-strong);
+  --mint: var(--theme-dark-soft);
+  --theme-button-text: #111a18;
+}
+
+html[data-theme="dark"][data-color-theme="blue"] {
+  --theme-sidebar: #101d33;
+  --theme-login-bg: #14233e;
+}
+
+html[data-theme="dark"][data-color-theme="violet"] {
+  --theme-sidebar: #1d172e;
+  --theme-login-bg: #241b39;
+}
+
+html[data-theme="dark"][data-color-theme="amber"] {
+  --theme-sidebar: #281d11;
+  --theme-login-bg: #33230f;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .app-shell {
+  background: #111a18;
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] .main-area,
+html[data-theme="dark"] .page-content {
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .account-menu,
+html[data-theme="dark"] .notification-popover,
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .modal-card,
+html[data-theme="dark"] .modal-content,
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .profile-card,
+html[data-theme="dark"] .employee-profile-card,
+html[data-theme="dark"] .inventory-card,
+html[data-theme="dark"] .schedule-card,
+html[data-theme="dark"] .report-card {
+  background: #1a2521;
+  border-color: #2b3934;
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] .topbar {
+  border-bottom-color: #2b3934;
+}
+
+html[data-theme="dark"] .breadcrumbs,
+html[data-theme="dark"] .breadcrumbs strong,
+html[data-theme="dark"] .page-heading h1,
+html[data-theme="dark"] .panel-heading h2,
+html[data-theme="dark"] .stat-value,
+html[data-theme="dark"] .account-menu-heading strong,
+html[data-theme="dark"] .modal h2,
+html[data-theme="dark"] .modal h3,
+html[data-theme="dark"] .form-label,
+html[data-theme="dark"] label {
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] .today,
+html[data-theme="dark"] .page-heading p,
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .stat-caption,
+html[data-theme="dark"] .panel-heading p,
+html[data-theme="dark"] .account-menu-heading span,
+html[data-theme="dark"] .eyebrow {
+  color: #9aa9a3;
+}
+
+html[data-theme="dark"] .account-menu,
+html[data-theme="dark"] .notification-popover {
+  box-shadow: 0 12px 32px #0008;
+}
+
+html[data-theme="dark"] .account-menu-heading,
+html[data-theme="dark"] .jobs-table th,
+html[data-theme="dark"] .jobs-table td,
+html[data-theme="dark"] .notification-heading,
+html[data-theme="dark"] .notification-item,
+html[data-theme="dark"] .profile,
+html[data-theme="dark"] .top-divider {
+  border-color: #2b3934;
+}
+
+html[data-theme="dark"] .jobs-table thead,
+html[data-theme="dark"] .jobs-table th,
+html[data-theme="dark"] .table-header,
+html[data-theme="dark"] .table-heading {
+  background: #202c27;
+}
+
+html[data-theme="dark"] .jobs-table td,
+html[data-theme="dark"] .jobs-table td strong,
+html[data-theme="dark"] .table-cell,
+html[data-theme="dark"] .account-menu > button {
+  color: #c5d0ca;
+}
+
+html[data-theme="dark"] .jobs-table tbody tr:hover,
+html[data-theme="dark"] .account-menu > button:hover,
+html[data-theme="dark"] .notification-item:hover {
+  background: #24332d;
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .search-box,
+html[data-theme="dark"] .filter-wrap,
+html[data-theme="dark"] .button-secondary {
+  background-color: #151f1b;
+  border-color: #35443e;
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #82928b;
+}
+
+html[data-theme="dark"] .button-secondary:hover,
+html[data-theme="dark"] .search-box kbd {
+  background: #24332d;
+  border-color: #40534a;
+  color: #e4ece8;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  color: #d9c27a;
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  background: #2b3934;
+  color: #f0d98d;
+}
+
+html[data-theme="dark"] .mobile-menu,
+html[data-theme="dark"] .notification {
+  color: #c5d0ca;
+}
+
+.nav-active {
+  box-shadow: inset 3px 0 var(--green) !important;
+}
+
+.brand-mark,
+.help-icon {
+  background: var(--green);
+}
+
+.brand-mark img {
+  filter: var(--theme-brand-filter);
+}
+
+.brand-name > span {
+  color: var(--theme-brand-highlight);
+}
+
+.nav-button small {
+  background: var(--green-dark);
+}
+
+.text-button {
+  color: var(--green);
+}
+
+.text-button:hover,
+.title-dot,
+.settings-panel > .panel-heading > svg {
+  color: var(--green-dark);
+}
+
+.settings-channel-enabled {
+  border-color: color-mix(in srgb, var(--green) 35%, white);
+  background: color-mix(in srgb, var(--mint) 55%, white);
+}
+
+.settings-channel input {
+  accent-color: var(--green);
+}
+
+.settings-channel > svg {
+  color: var(--green);
+}
+
+.stat-icon.green,
+.stat-trend.green,
+.report-metric-icon.green {
+  color: var(--green);
+}
+
+.stat-icon.green,
+.report-metric-icon.green,
+.pm-notice,
+.pm-due-upcoming,
+.inventory-status-ok {
+  background-color: var(--mint);
+}
+
+.job-number,
+.empty-icon,
+.form-section-label,
+.inline-link,
+.customer-source,
+.is-active,
+.button-reactivate,
+.equipment-icon,
+.equipment-history strong,
+.timeline-marker,
+.schedule-day > header > small,
+.schedule-day-today > header > strong,
+.log-entry-form h4 svg,
+.pm-asset svg,
+.report-trend-value,
+.notification-dot i,
+.job-created-icon,
+.job-created-number,
+.employee-profile-avatar,
+.success-text,
+.attachment-icon,
+.attachment-picker,
+.saved-location-icon,
+.selected-location strong,
+.inventory-available,
+.inventory-movement-positive,
+.pm-notice,
+.pm-due-upcoming,
+.inventory-status-ok,
+.top-profile-button:hover,
+.role-permission-count,
+.print-header,
+.print-header h1,
+.print-grid h3,
+.print-section h3 {
+  color: var(--green);
+}
+
+.employee-profile-avatar,
+.attachment-icon,
+.saved-location-icon {
+  background-color: var(--mint);
+}
+
+.pm-notice {
+  border-color: var(--theme-accent-outline);
+}
+
+.top-profile-button:hover {
+  box-shadow: 0 0 0 3px var(--theme-focus-shadow);
+}
+
+.is-active i,
+.report-bar-track i,
+.report-trend-track i,
+.report-priority-bar,
+.report-priority-low {
+  background-color: var(--green);
+}
+
+.report-bar-track i,
+.report-trend-track i,
+.report-priority-bar {
+  color: var(--green);
+}
+
+.job-created-number,
+.print-header,
+.print-header h1,
+.print-grid h3,
+.print-section h3 {
+  border-color: var(--green);
+}
+
+.search-box:focus-within,
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.schedule-employee-filter:focus-within,
+.schedule-today:focus-visible,
+.customer-search-input:focus-within {
+  border-color: var(--theme-accent-outline);
+  box-shadow: 0 0 0 3px var(--theme-focus-shadow);
+}
+
+.settings-channel-enabled {
+  border-color: var(--theme-accent-outline);
+  background: var(--mint);
+}
+
+.login-art {
+  background: var(--theme-login-bg);
+}
+
+.login-message .eyebrow,
+.login-art-footer {
+  color: var(--theme-login-muted);
+}
+
+.login-message h1 em,
+.login-points svg {
+  color: var(--theme-login-highlight);
+}
+
+.login-form .eyebrow,
+.login-secure svg {
+  color: var(--theme-login-form-accent);
+}
+
+.login-blob {
+  border-color: color-mix(in srgb, var(--theme-login-highlight) 12%, transparent);
+}
+
+.role-security-note {
+  border-color: var(--theme-accent-outline);
+  background: var(--mint);
+  color: var(--green-dark);
+}
+
+.permission-option:has(input:checked) {
+  border-color: var(--theme-accent-outline);
+  background: color-mix(in srgb, var(--mint) 65%, transparent);
+}
+
+.success-text {
+  color: var(--green-dark);
+}
+
+.role-permission-count {
+  background: var(--mint);
+}
+
+.print-header h1,
+.print-grid h3,
+.print-section h3 {
+  color: var(--green-dark);
+}
+
+.button-primary {
+  color: var(--theme-button-text);
+}
+
+.color-theme-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+}
+
+.color-theme-option {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.color-theme-option-selected {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--green) 15%, transparent);
+}
+
+.color-theme-option input {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  accent-color: var(--green);
+}
+
+.color-theme-preview {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 8px;
+  background: var(--preview-soft);
+}
+
+.color-theme-preview i {
+  width: 6px;
+  height: 17px;
+  border-radius: 3px;
+  background: var(--preview-color);
+}
+
+.color-theme-preview i:nth-child(2) {
+  height: 22px;
+  background: var(--preview-strong);
+}
+
+.color-theme-preview i:nth-child(3) {
+  height: 12px;
+}
+
+.color-theme-preview-green {
+  --preview-color: #267a61;
+  --preview-strong: #185d49;
+  --preview-soft: #e8f3ef;
+}
+
+.color-theme-preview-blue {
+  --preview-color: #3d6dcc;
+  --preview-strong: #2c50a0;
+  --preview-soft: #eaf0fc;
+}
+
+.color-theme-preview-violet {
+  --preview-color: #7954b8;
+  --preview-strong: #5b3c91;
+  --preview-soft: #f1ebfb;
+}
+
+.color-theme-preview-amber {
+  --preview-color: #b56b18;
+  --preview-strong: #8d5010;
+  --preview-soft: #fff2df;
+}
+
+.color-theme-copy {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.color-theme-copy strong {
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.color-theme-copy small {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 900px) {
+  .color-theme-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .color-theme-options {
+    grid-template-columns: 1fr;
+  }
+}

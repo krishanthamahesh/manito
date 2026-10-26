@@ -1,0 +1,223 @@
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.avatar img,
+.top-avatar img,
+.employee-profile-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar,
+.top-avatar,
+.employee-profile-avatar {
+  overflow: hidden;
+}
+
+.account-menu-wrap {
+  position: relative;
+}
+
+.account-menu {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 224px;
+  padding: 6px;
+  border: 1px solid #e6ece8;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 12px 32px #18262520;
+}
+
+.account-menu-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 9px 10px 11px;
+  border-bottom: 1px solid #edf1ee;
+}
+
+.account-menu-heading strong {
+  overflow: hidden;
+  color: #263431;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu-heading span {
+  overflow: hidden;
+  color: #83908d;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu > button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #46534e;
+  font-size: 11px;
+  text-align: left;
+}
+
+.account-menu > button:hover {
+  background: #f3f7f4;
+  color: var(--green-dark);
+}
+
+.organization-logo-settings {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 18px 12px;
+}
+
+.organization-logo-preview {
+  display: grid;
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #e5ece8;
+  border-radius: 7px;
+  background: #fff;
+  color: #96a19d;
+  font-size: 10px;
+}
+
+.organization-logo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.organization-logo-actions,
+.profile-picture-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.organization-logo-actions input[type="file"],
+.profile-picture-controls input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.organization-logo-actions .field-hint,
+.profile-picture-controls .field-hint {
+  flex-basis: 100%;
+}
+
+.photo-settings {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 14px;
+}
+
+.login-company-branding {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.login-company-branding img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.login-company-branding strong {
+  color: #33443d;
+  font-size: 14px;
+}
+
+.login-branding-error {
+  margin: 0 0 10px;
+  color: #a45c45;
+  font-size: 10px;
+}
+
+.success-toast {
+  position: fixed;
+  z-index: 10000;
+  top: 78px;
+  right: 24px;
+  display: flex;
+  max-width: min(420px, calc(100vw - 32px));
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #b9dfc6;
+  border-radius: 8px;
+  background: #f0faf3;
+  box-shadow: 0 8px 24px #1826251a;
+  color: #256b3c;
+  font-size: 13px;
+}
+
+.success-toast > span {
+  flex: 1;
+}
+
+.success-toast .icon-button {
+  flex: 0 0 auto;
+  color: #39754b;
+}
+
+@media (max-width: 600px) {
+  .success-toast {
+    top: 64px;
+    right: 12px;
+    left: 12px;
+  }
+}
+
+.print-organization-logo {
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
+  object-fit: contain;
+}
+
+.print-organization-copy {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .organization-logo-settings {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+}

@@ -1,0 +1,41 @@
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-group > .nav-button {
+  width: 100%;
+}
+
+.nav-chevron {
+  margin-left: auto;
+  transition: transform 160ms ease;
+}
+
+.nav-chevron-open {
+  transform: rotate(180deg);
+}
+
+.nav-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 4px 26px;
+  padding-left: 8px;
+  border-left: 1px solid rgb(160 178 172 / 28%);
+}
+
+.nav-button.nav-sub-button {
+  width: 100%;
+  height: 34px;
+  min-height: 34px;
+  padding: 0 10px;
+  gap: 8px;
+  font-size: 10px;
+}
+
+.nav-button.nav-sub-button svg {
+  width: 14px;
+  height: 14px;
+}

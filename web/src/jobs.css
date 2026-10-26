@@ -1,0 +1,43 @@
+.jobs-table {
+  min-width: 930px;
+}
+
+.job-assignee-cell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #66736f;
+}
+
+.job-assignee-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.job-assignee-copy > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job-assignee-copy small {
+  color: #929d99;
+  font-size: 9px;
+}
+
+.job-unassigned {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #929d99;
+}
+
+html[data-theme="dark"] .job-assignee-cell {
+  color: #c5d0ca;
+}
+
+html[data-theme="dark"] .job-assignee-copy small,
+html[data-theme="dark"] .job-unassigned {
+  color: #9aa9a3;
+}

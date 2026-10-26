@@ -1,0 +1,57 @@
+.customer-row{gap:12px}
+.customer-row-main{flex:1;min-width:100px}
+.customer-edit-action{flex:0 0 auto;white-space:nowrap}
+.customer-row-main>small{display:block;margin-top:4px;color:#87938e;font-size:9px;overflow-wrap:anywhere}
+.location-management{padding:0 20px 20px;max-height:72vh;overflow:auto}
+.location-form{padding:13px;border:1px solid #e8eeea;border-radius:8px;background:#fbfcfb}
+.location-form h3{margin:0 0 12px;color:#3d5148;font-size:12px}
+.location-form .field{margin-bottom:10px}
+.location-form .field label{font-size:10px}
+.location-form .field input,.location-form .field textarea{font-size:11px}
+.saved-locations{margin-top:14px}
+.saved-locations>.workflow-heading{margin-top:0}
+.saved-location-list{list-style:none;padding:0;margin:0}
+.saved-location-list li{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid #eff2f0}
+.saved-location-list li:last-child{border-bottom:0}
+.saved-location-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:7px;background:#f0f6f2;color:#4a9273}
+.saved-location-copy{min-width:0;flex:1}
+.saved-location-copy>strong,.saved-location-copy>span,.saved-location-copy>small{display:block}
+.saved-location-copy>strong{color:#3d4b45;font-size:10px}
+.saved-location-copy>span,.saved-location-copy>small{margin-top:3px;color:#77847e;font-size:9px;overflow-wrap:anywhere}
+.saved-location-copy>small{color:#8a9691}
+.location-inactive .saved-location-copy{opacity:.62}
+.location-inactive-badge{margin-left:6px;padding:2px 5px;border-radius:4px;background:#f3f0e7;color:#86774e;font-size:8px;font-weight:600}
+.saved-location-list .button{height:30px;padding:0 8px;font-size:9px}
+.selected-location{display:flex;flex-direction:column;gap:4px;padding:9px 10px;border:1px solid #e5eee8;border-radius:6px;background:#f7faf8;color:#54635b;font-size:10px}
+.selected-location strong{color:#3b594b}
+.selected-location small{color:#87938e}
+@media(max-width:600px){.location-management{padding:0 14px 15px}.saved-location-list li{flex-wrap:wrap}.saved-location-copy{flex-basis:calc(100% - 42px)}.saved-location-list li>.button:first-of-type{margin-left:39px}}
+.sidebar{overflow-y:auto;overscroll-behavior:contain}
+.sidebar>*{flex-shrink:0}
+.sidebar-spacer{flex:1 0 14px}
+.profile{min-height:59px}
+.profile-open{display:flex;align-items:center;gap:9px;min-width:0;flex:1;padding:0;border:0;background:transparent;color:inherit;text-align:left}
+.profile-open:hover .profile-copy strong{color:#fff}
+.top-profile-button{padding:0;border:0;cursor:pointer}
+.top-profile-button:hover{box-shadow:0 0 0 3px #267a6120}
+.organization-locations-panel{overflow:hidden}
+.organization-locations-panel>.panel-heading{align-items:flex-start;gap:14px}
+.organization-locations-panel>.panel-heading>div{min-width:0}
+.organization-locations-panel .panel-heading p{max-width:650px;line-height:1.5}
+.organization-location-form{margin:0 18px 18px;padding:14px;border:1px solid #e8eeea;border-radius:8px;background:#fbfcfb}
+.organization-location-form h3{margin:0 0 12px;color:#3d5148;font-size:12px}
+.organization-location-form .field{margin-bottom:10px}
+.organization-location-form .modal-actions{margin-top:5px}
+.organization-location-list{padding:0 18px 10px}
+.organization-location-list .button{height:32px;padding:0 9px;font-size:10px}
+@media(max-width:600px){.organization-locations-panel>.panel-heading{flex-direction:column;align-items:stretch}.organization-locations-panel>.panel-heading>.button{align-self:flex-start}.organization-location-form{margin:0 12px 14px;padding:12px}.organization-location-list{padding:0 12px 8px}.organization-location-list li>.button{flex:1}.organization-location-list li>.button:first-of-type{margin-left:0}}
+.contractor-panel{overflow:hidden}
+.contractor-form{margin:0 18px 18px;padding:14px;border:1px solid #e8eeea;border-radius:8px;background:#fbfcfb}
+.contractor-form h3{margin:0 0 12px;color:#3d5148;font-size:12px}
+.contractor-form .field{margin-bottom:10px}
+.contractor-list{list-style:none;margin:0;padding:0 18px 10px}
+.contractor-list li{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid #eff2f0}
+.contractor-list li:last-child{border-bottom:0}
+.contractor-list .saved-location-copy{flex:1;min-width:0}
+.contractor-list .button{height:32px;padding:0 9px;font-size:10px}
+@media(max-width:600px){.contractor-form{margin:0 12px 14px;padding:12px}.contractor-list{padding:0 12px 8px}.contractor-list li{flex-wrap:wrap}.contractor-list .saved-location-copy{flex-basis:calc(100% - 42px)}.contractor-list li>.button{flex:1}.contractor-list li>.button:first-of-type{margin-left:0}}
