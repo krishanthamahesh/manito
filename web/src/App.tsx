@@ -61,15 +61,17 @@ const priorityNames:Record<string,string>={low:'Low',normal:'Normal',high:'High'
 const statusOptions=Object.entries(statusNames);
 function notifySuccess(message:string){window.dispatchEvent(new CustomEvent('manito:success',{detail:message}));}
 
+const apiBaseUrl=(import.meta.env.VITE_API_BASE_URL??'').replace(/\/+$/,'');
+function apiUrl(path:string):string{return `${apiBaseUrl}/api/v1${path}`;}
 async function api<T>(path:string,token:string|null,init:RequestInit={}):Promise<T>{
-  const response=await fetch(`/api/v1${path}`,{...init,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...init.headers}});
+  const response=await fetch(apiUrl(path),{...init,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...init.headers}});
   const data=await response.json().catch(()=>null) as {message?:string|string[]}|null;
   if(!response.ok){const message=Array.isArray(data?.message)?data.message.join(' '):data?.message;throw new Error(message||'Request failed. Please try again.');}
   return data as T;
 }
 async function uploadFile(path:string,token:string|null,file:File):Promise<{success:boolean}>{
   const form=new FormData();form.append('file',file);
-  const response=await fetch(`/api/v1${path}`,{method:'POST',headers:token?{Authorization:`Bearer ${token}`}:{},body:form});
+  const response=await fetch(apiUrl(path),{method:'POST',headers:token?{Authorization:`Bearer ${token}`}:{},body:form});
   const data=await response.json().catch(()=>null) as {message?:string|string[]}|null;
   if(!response.ok){const message=Array.isArray(data?.message)?data.message.join(' '):data?.message;throw new Error(message||'Image upload failed. Please try again.');}
   return data as {success:boolean};
@@ -527,7 +529,7 @@ function WorkOrderAttachmentsPanel({jobId,token,canWrite,onActivityChanged}:{job
     setError('');setUploading(true);
     try{
       const body=new FormData();body.append('file',file);
-      const response=await fetch(`/api/v1/jobs/${jobId}/attachments`,{method:'POST',headers:{Authorization:`Bearer ${token}`},body});
+      const response=await fetch(apiUrl(`/jobs/${jobId}/attachments`),{method:'POST',headers:{Authorization:`Bearer ${token}`},body});
       const result=await response.json().catch(()=>null) as JobAttachment|{message?:string|string[]}|null;
       if(!response.ok){const message=(result as {message?:string|string[]}|null)?.message;throw new Error(Array.isArray(message)?message.join(' '):message||'File upload failed. Please try again.');}
       setAttachments(current=>[{...(result as JobAttachment),uploadedBy:(result as JobAttachment).uploadedBy||'You'},...current]);form.reset();await onActivityChanged();notifySuccess('Attachment uploaded successfully.');
@@ -537,7 +539,7 @@ function WorkOrderAttachmentsPanel({jobId,token,canWrite,onActivityChanged}:{job
     if(!token)return;
     setError('');
     try{
-      const response=await fetch(`/api/v1/jobs/${jobId}/attachments/${attachment.id}/content`,{headers:{Authorization:`Bearer ${token}`}});
+      const response=await fetch(apiUrl(`/jobs/${jobId}/attachments/${attachment.id}/content`),{headers:{Authorization:`Bearer ${token}`}});
       if(!response.ok){const result=await response.json().catch(()=>null) as {message?:string|string[]}|null;throw new Error(Array.isArray(result?.message)?result.message.join(' '):result?.message||'Unable to download this attachment.');}
       const url=URL.createObjectURL(await response.blob());const link=document.createElement('a');link.href=url;link.download=attachment.originalName;document.body.appendChild(link);link.click();link.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);
     }catch(failure){setError((failure as Error).message);}

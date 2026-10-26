@@ -9,6 +9,8 @@ import { DatabaseService } from './database.service';
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api/v1');
+  const corsOrigins = process.env.CORS_ORIGIN?.split(',').map((origin) => origin.trim()).filter(Boolean);
+  app.enableCors({ origin: corsOrigins?.length ? corsOrigins : false });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true, transform: true }));
   await app.get(DatabaseService).initialize();
   const webDist = join(__dirname, '../../web/dist');
