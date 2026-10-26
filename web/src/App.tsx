@@ -970,7 +970,40 @@ function SelfProfilePanel({user,onSave,onChangePassword,onUploadPhoto,onRemovePh
     </form>
   </section>;
 }
-function RolesPanel({roles,permissions,onEdit,onDelete}:{roles:Role[];permissions:PermissionOption[];onEdit:(role:Role)=>void;onDelete:(role:Role)=>void}){const groups=[...new Set(permissions.map(permission=>permission.group))];return <section className="role-management"><div className="role-security-note"><ShieldCheck size={19}/><div><strong>Administrator access is protected</strong><span>Built-in roles are fixed. Custom roles cannot manage employee accounts, roles, or organization settings.</span></div></div><div className="role-card-grid">{roles.map(role=><article className="panel role-card" key={role.id}><div className="role-card-heading"><div><div className="role-name-line"><h2>{role.name}</h2>{role.systemRole&&<span className="role-system-badge">Built-in</span>}</div><p>{role.description}</p></div><span className="role-permission-count">{role.permissions.length} permissions</span></div><div className="role-card-groups">{groups.map(group=>{const names=permissions.filter(permission=>permission.group===group&&role.permissions.includes(permission.key)).map(permission=>permission.label);return names.length?<div key={group}><strong>{group}</strong><span>{names.join('  |  ')}</span></div>:null;})}</div><div className="role-card-actions">{role.systemRole?<span className="role-protected"><ShieldCheck size={14}/> Protected system role</span>:<><button className="button button-secondary button-small" onClick={()=>onEdit(role)}>Edit permissions</button><button className="button button-secondary button-small" onClick={()=>onDelete(role)}>Delete role</button></>}</div></article>)}</div></section>;}
+function RolesPanel({roles,permissions,onEdit,onDelete}:{roles:Role[];permissions:PermissionOption[];onEdit:(role:Role)=>void;onDelete:(role:Role)=>void}){
+  const groups=[...new Set(permissions.map(permission=>permission.group))];
+  const hasCustomRoles=roles.some(role=>!role.systemRole);
+  return <section className="role-management">
+    <div className="role-security-note">
+      <ShieldCheck size={19}/>
+      <div>
+        <strong>Administrator access is protected</strong>
+        <span>Built-in roles are fixed. Create a custom role to edit its name, description, and permissions. Custom roles cannot manage employee accounts, roles, or organization settings.</span>
+      </div>
+    </div>
+    {!hasCustomRoles&&<div className="field-hint">There are no custom roles yet. Select <strong>Create role</strong> above to add an editable role.</div>}
+    <div className="role-card-grid">{roles.map(role=><article className="panel role-card" key={role.id}>
+      <div className="role-card-heading">
+        <div>
+          <div className="role-name-line"><h2>{role.name}</h2>{role.systemRole&&<span className="role-system-badge">Built-in</span>}</div>
+          <p>{role.description}</p>
+        </div>
+        <span className="role-permission-count">{role.permissions.length} permissions</span>
+      </div>
+      <div className="role-card-groups">{groups.map(group=>{
+        const names=permissions.filter(permission=>permission.group===group&&role.permissions.includes(permission.key)).map(permission=>permission.label);
+        return names.length?<div key={group}><strong>{group}</strong><span>{names.join('  |  ')}</span></div>:null;
+      })}</div>
+      <div className="role-card-actions">{role.systemRole
+        ?<span className="role-protected"><ShieldCheck size={14}/> Protected system role</span>
+        :<>
+          <button className="button button-secondary button-small" onClick={()=>onEdit(role)}>Edit role</button>
+          <button className="button button-secondary button-small" onClick={()=>onDelete(role)}>Delete role</button>
+        </>}
+      </div>
+    </article>)}</div>
+  </section>;
+}
 function RoleForm({role,permissions,defaultPermissions,onSubmit,onCancel}:{role:Role|null;permissions:PermissionOption[];defaultPermissions:string[];onSubmit:(event:FormEvent<HTMLFormElement>)=>void;onCancel:()=>void}){const groups=[...new Set(permissions.map(permission=>permission.group))];const selected=role?.permissions||defaultPermissions;return <form className="form-body role-form" onSubmit={onSubmit}><p className="field-hint">Choose what employees with this role can access. Write access also includes the related view permission. Administrator-only controls are reserved.</p><div className="field"><label htmlFor="roleName">Role name <b>*</b></label><input id="roleName" name="name" required minLength={1} maxLength={80} defaultValue={role?.name||''} placeholder="For example, Service coordinator"/></div><div className="field"><label htmlFor="roleDescription">Description</label><textarea id="roleDescription" name="description" maxLength={500} rows={2} defaultValue={role?.description||''} placeholder="Describe the responsibilities of this role"/></div><fieldset className="permission-groups"><legend>Permissions</legend>{groups.map(group=><section className="permission-group" key={group}><h3>{group}</h3><div className="permission-options">{permissions.filter(permission=>permission.group===group&&!['team.manage','settings.manage','roles.manage'].includes(permission.key)).map(permission=><label className="permission-option" key={permission.key}><input type="checkbox" name={`permission:${permission.key}`} defaultChecked={selected.includes(permission.key)}/><span>{permission.label}</span></label>)}</div></section>)}</fieldset><div className="modal-actions"><button type="button" className="button button-secondary" onClick={onCancel}>Cancel</button><button className="button button-primary" type="submit"><Check size={16}/>{role?'Save role':'Create role'}</button></div></form>;}
 function Login({onLogin,onColorThemeChange}:{onLogin:(e:string,p:string)=>Promise<void>;onColorThemeChange:(theme:ColorTheme)=>void}){
   const [email,setEmail]=useState('');
