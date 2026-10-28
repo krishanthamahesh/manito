@@ -408,6 +408,39 @@ html[data-theme="dark"] .notification {
   color: var(--green-dark);
 }
 
+.stat-card-button {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.stat-card-button:hover,
+.stat-card-button:focus-visible {
+  border-color: var(--theme-accent-outline);
+  box-shadow: 0 4px 14px var(--theme-focus-shadow);
+}
+
+.stat-card-button:focus-visible {
+  outline: 2px solid var(--theme-accent-outline);
+  outline-offset: 2px;
+}
+
+.field select,
+.filter-wrap select {
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  appearance: auto;
+}
+
+.settings-readonly-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .permission-option:has(input:checked) {
   border-color: var(--theme-accent-outline);
   background: color-mix(in srgb, var(--mint) 65%, transparent);

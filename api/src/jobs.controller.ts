@@ -55,11 +55,21 @@ export class JobsController {
       FROM jobs WHERE tenant_id=$1`,[req.user.tenantId]);
     return result.rows[0];
   }
-  @Get() async list(@Req() req:UserRequest,@Query('status') status?:string,@Query('search') search?:string,@Query('page') page?:string,@Query('pageSize') pageSize?:string){
+  @Get() async list(@Req() req:UserRequest,@Query('status') status?:string,@Query('search') search?:string,@Query('page') page?:string,@Query('pageSize') pageSize?:string,@Query('priority') priority?:string){
     requirePermission(req.user,'jobs.read');
     const pagination=parsePagination(page,pageSize);
     const values:unknown[]=[req.user.tenantId]; const filters=['j.tenant_id=$1'];
-    if(status&&status!=='all'){values.push(status);filters.push(`j.status=$${values.length}`);}
+    if(status&&status!=='all'){
+      if(status==='open')filters.push(`j.status NOT IN ('completed','cancelled')`);
+      else {values.push(status);filters.push(`j.status=$${values.length}`);}
+    }
+    if(priority&&priority!=='all'){
+      if(!['low','normal','high','urgent'].includes(priority))throw new BadRequestException('Select a valid job priority.');
+      values.push(priority);
+      filters.push(priority==='urgent'
+        ?`(j.priority=$${values.length} OR j.reported_urgency=$${values.length})`
+        :`j.priority=$${values.length}`);
+    }
     if(search?.trim()){values.push(`%${search.trim()}%`);filters.push(`(j.title ILIKE $${values.length} OR c.full_name ILIKE $${values.length} OR j.job_number::text ILIKE $${values.length} OR a.name ILIKE $${values.length} OR a.serial_number ILIKE $${values.length})`);}
     const from=`FROM jobs j JOIN customers c ON c.id=j.customer_id AND c.tenant_id=j.tenant_id LEFT JOIN assets a ON a.id=j.asset_id AND a.tenant_id=j.tenant_id`;
     const where=`WHERE ${filters.join(' AND ')}`;

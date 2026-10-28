@@ -8,10 +8,15 @@
   body *{visibility:hidden!important}
   .print-sheet,.print-sheet *{visibility:visible!important}
   .print-sheet{display:block!important;position:absolute;top:0;left:0;width:100%;padding:0;color:#202c28;background:#fff;font-family:Arial,sans-serif;font-size:10pt;line-height:1.4}
-  .print-header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:12px;border-bottom:2px solid #267a61}
+  .print-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px 18px;padding-bottom:12px;border-bottom:2px solid #267a61}
+  .print-organization{display:flex;align-items:flex-start;gap:10px;min-width:0}
+  .print-header .print-organization-logo{width:64px;height:64px;flex:0 0 64px;object-fit:contain}
+  .print-organization-copy{min-width:0}
   .print-header h1{margin:0;color:#185d49;font-size:19pt}
-  .print-header p{margin:4px 0 0;color:#65716c;font-size:9pt}
-  .print-reference{text-align:right}
+  .print-organization-contacts{display:grid;gap:2px;margin-top:4px;color:#65716c;font-size:9pt}
+  .print-organization-contacts span{overflow-wrap:anywhere}
+  .print-job-card-caption{grid-column:1/-1;justify-self:center;color:#185d49;font-size:17pt;white-space:nowrap}
+  .print-reference{justify-self:end;text-align:right}
   .print-reference span,.print-reference strong{display:block}
   .print-reference span{color:#65716c;font-size:8pt;letter-spacing:1px}
   .print-reference strong{margin-top:2px;font-size:16pt}

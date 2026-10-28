@@ -110,6 +110,23 @@ test('job list search and pagination are scoped to the caller tenant', async()=>
   assert.match(calls[1].sql,/LIMIT \$4 OFFSET \$5/);
 });
 
+test('job list can filter open jobs by the urgent summary metric',async()=>{
+  const calls:{sql:string;values:unknown[]}[]=[];
+  const db={
+    query:async<T>(sql:string,values:unknown[]=[]):Promise<{rows:T[];rowCount:number}>=>{
+      calls.push({sql,values});
+      return {rows:(sql.includes('count(*)')?[{total:'2'}]:[{id:'job-1'},{id:'job-2'}]) as T[],rowCount:1};
+    }
+  } as unknown as DatabaseService;
+  const result=await new JobsController(db).list({user} as never,'open',undefined,'1','10','urgent');
+
+  assert.equal(result.total,2);
+  assert.deepEqual(calls[0].values,['tenant-1','urgent']);
+  assert.match(calls[0].sql,/j\.status NOT IN \('completed','cancelled'\)/);
+  assert.match(calls[0].sql,/\(j\.priority=\$2 OR j\.reported_urgency=\$2\)/);
+  assert.deepEqual(calls[1].values,['tenant-1','urgent',10,0]);
+});
+
 test('job creation validates the customer tenant and stores an initial history event', async()=>{
   const calls:{sql:string;values:unknown[]}[]=[];
   const db={

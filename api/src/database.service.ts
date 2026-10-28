@@ -8,8 +8,10 @@ export class DatabaseService implements OnModuleDestroy {
   async initialize(): Promise<void> {
     if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not configured.');
     await this.pool.query(`
-      CREATE TABLE IF NOT EXISTS tenants(id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name TEXT NOT NULL UNIQUE, contact_phone TEXT, contact_email TEXT, time_zone TEXT NOT NULL DEFAULT 'UTC', phone_intake_enabled BOOLEAN NOT NULL DEFAULT true, walk_in_intake_enabled BOOLEAN NOT NULL DEFAULT true, color_theme TEXT NOT NULL DEFAULT 'green', created_at TIMESTAMPTZ NOT NULL DEFAULT now());
+      CREATE TABLE IF NOT EXISTS tenants(id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name TEXT NOT NULL UNIQUE, address TEXT, contact_phone TEXT, technical_contact_phone TEXT, contact_email TEXT, time_zone TEXT NOT NULL DEFAULT 'UTC', phone_intake_enabled BOOLEAN NOT NULL DEFAULT true, walk_in_intake_enabled BOOLEAN NOT NULL DEFAULT true, color_theme TEXT NOT NULL DEFAULT 'green', created_at TIMESTAMPTZ NOT NULL DEFAULT now());
+      ALTER TABLE tenants ADD COLUMN IF NOT EXISTS address TEXT;
       ALTER TABLE tenants ADD COLUMN IF NOT EXISTS contact_phone TEXT;
+      ALTER TABLE tenants ADD COLUMN IF NOT EXISTS technical_contact_phone TEXT;
       ALTER TABLE tenants ADD COLUMN IF NOT EXISTS contact_email TEXT;
       ALTER TABLE tenants ADD COLUMN IF NOT EXISTS time_zone TEXT NOT NULL DEFAULT 'UTC';
       ALTER TABLE tenants ADD COLUMN IF NOT EXISTS phone_intake_enabled BOOLEAN NOT NULL DEFAULT true;

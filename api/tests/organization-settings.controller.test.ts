@@ -14,14 +14,16 @@ test('organization settings include tenant logo data for reports',async()=>{
   const db={
     query:async<T>(_sql:string,values:unknown[]=[]):Promise<{rows:T[];rowCount:number}>=>{
       assert.deepEqual(values,['tenant-1']);
-      return {rows:[{shopName:'Manito Shop',contactPhone:null,contactEmail:null,timeZone:'UTC',
+      return {rows:[{shopName:'Manito Shop',address:'Main street',officeContactPhone:'0112345678',
+        technicalContactPhone:'0771234567',contactEmail:null,timeZone:'UTC',
         phoneIntakeEnabled:true,walkInIntakeEnabled:true,colorTheme:'green',
         logoBase64:'iVBORw0KGgo=',logoContentType:'image/png'}] as T[],rowCount:1};
     }
   } as unknown as DatabaseService;
   const result=await new OrganizationSettingsController(db).get({user:admin} as never);
   assert.deepEqual(result,{
-    shopName:'Manito Shop',contactPhone:null,contactEmail:null,timeZone:'UTC',
+    shopName:'Manito Shop',address:'Main street',officeContactPhone:'0112345678',
+    technicalContactPhone:'0771234567',contactEmail:null,timeZone:'UTC',
     phoneIntakeEnabled:true,walkInIntakeEnabled:true,colorTheme:'green',
     logoDataUrl:'data:image/png;base64,iVBORw0KGgo='
   });
@@ -43,18 +45,20 @@ test('administrator can save the organization color theme',async()=>{
   let parameters:unknown[]=[];
   const db={
     query:async<T>(sql:string,values:unknown[]=[]):Promise<{rows:T[];rowCount:number}>=>{
-      assert.match(sql,/color_theme=COALESCE\(\$8,color_theme\)/);
+      assert.match(sql,/color_theme=COALESCE\(\$10,color_theme\)/);
       parameters=values;
-      return {rows:[{shopName:'Manito Shop',contactPhone:null,contactEmail:null,timeZone:'UTC',
+      return {rows:[{shopName:'Manito Shop',address:'Main street',officeContactPhone:'0112345678',
+        technicalContactPhone:'0771234567',contactEmail:null,timeZone:'UTC',
         phoneIntakeEnabled:true,walkInIntakeEnabled:true,colorTheme:'violet',
         logoBase64:null,logoContentType:null}] as T[],rowCount:1};
     }
   } as unknown as DatabaseService;
   const result=await new OrganizationSettingsController(db).update({user:admin} as never,{
-    shopName:'Manito Shop',timeZone:'UTC',phoneIntakeEnabled:true,walkInIntakeEnabled:true,colorTheme:'violet'
+    shopName:'Manito Shop',address:' Main street ',officeContactPhone:' 0112345678 ',
+    technicalContactPhone:' 0771234567 ',timeZone:'UTC',phoneIntakeEnabled:true,walkInIntakeEnabled:true,colorTheme:'violet'
   });
   assert.equal(result.colorTheme,'violet');
-  assert.deepEqual(parameters,['tenant-1','Manito Shop',null,null,'UTC',true,true,'violet']);
+  assert.deepEqual(parameters,['tenant-1','Manito Shop','Main street','0112345678','0771234567',null,'UTC',true,true,'violet']);
 });
 
 test('administrator can upload a verified tenant logo',async()=>{

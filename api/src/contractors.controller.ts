@@ -29,7 +29,7 @@ export class ContractorsController {
 
   @Get()
   async list(@Req() req:UserRequest,@Query('search') search?:string,@Query('page') page?:string,@Query('pageSize') pageSize?:string){
-    requirePermission(req.user,'jobs.update');
+    requirePermission(req.user,'contractors.read');
     const pagination=parsePagination(page,pageSize);
     const values:unknown[]=[req.user.tenantId];
     let where='tenant_id=$1';
@@ -42,7 +42,7 @@ export class ContractorsController {
 
   @Post()
   async create(@Req() req:UserRequest,@Body() body:ContractorDto){
-    requirePermission(req.user,'settings.manage');
+    requirePermission(req.user,'contractors.manage');
     const name=body.name.trim();
     if(!name) throw new BadRequestException('Enter a contractor name.');
     const result=await this.db.query(`INSERT INTO contractors(tenant_id,name,phone,email,notes)
@@ -54,7 +54,7 @@ export class ContractorsController {
 
   @Patch(':contractorId')
   async update(@Req() req:UserRequest,@Param('contractorId') contractorId:string,@Body() body:UpdateContractorDto){
-    requirePermission(req.user,'settings.manage');
+    requirePermission(req.user,'contractors.manage');
     if(body.name===undefined&&body.phone===undefined&&body.email===undefined&&body.notes===undefined&&body.active===undefined){
       throw new BadRequestException('Provide contractor details or an active state to update.');
     }

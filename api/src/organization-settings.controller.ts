@@ -14,7 +14,9 @@ interface UploadedOrganizationLogo{buffer:Buffer;mimetype:string;}
 
 class UpdateOrganizationSettingsDto {
   @IsString() @MinLength(1) @MaxLength(120) shopName!:string;
-  @IsOptional() @IsString() @MaxLength(40) contactPhone?:string;
+  @IsOptional() @IsString() @MaxLength(500) address?:string;
+  @IsOptional() @IsString() @MaxLength(40) officeContactPhone?:string;
+  @IsOptional() @IsString() @MaxLength(40) technicalContactPhone?:string;
   @IsOptional() @IsEmail() @MaxLength(254) contactEmail?:string;
   @IsString() @MinLength(1) @MaxLength(100) timeZone!:string;
   @IsBoolean() phoneIntakeEnabled!:boolean;
@@ -32,9 +34,10 @@ export class OrganizationSettingsController {
   @Get()
   async get(@Req() req:UserRequest){
     requirePermission(req.user,'settings.read');
-    const result=await this.db.query<{shopName:string;contactPhone:string|null;contactEmail:string|null;timeZone:string;
+    const result=await this.db.query<{shopName:string;address:string|null;officeContactPhone:string|null;technicalContactPhone:string|null;contactEmail:string|null;timeZone:string;
       phoneIntakeEnabled:boolean;walkInIntakeEnabled:boolean;colorTheme:OrganizationColorTheme;logoBase64:string|null;logoContentType:string|null}>
-      (`SELECT name AS "shopName",contact_phone AS "contactPhone",contact_email AS "contactEmail",
+      (`SELECT name AS "shopName",address,contact_phone AS "officeContactPhone",
+      technical_contact_phone AS "technicalContactPhone",contact_email AS "contactEmail",
       time_zone AS "timeZone",phone_intake_enabled AS "phoneIntakeEnabled",walk_in_intake_enabled AS "walkInIntakeEnabled",
       color_theme AS "colorTheme",
       encode(logo,'base64') AS "logoBase64",logo_content_type AS "logoContentType"
@@ -57,6 +60,7 @@ export class OrganizationSettingsController {
   async update(@Req() req:UserRequest,@Body() body:UpdateOrganizationSettingsDto){
     requireAdministrator(req.user);
     const shopName=body.shopName.trim();
+    const address=body.address?.trim()||null;
     const timeZone=body.timeZone.trim();
     if(!shopName) throw new BadRequestException('Enter an organization name.');
     if(!body.phoneIntakeEnabled&&!body.walkInIntakeEnabled) throw new BadRequestException('Enable at least one job intake channel.');
@@ -67,16 +71,20 @@ export class OrganizationSettingsController {
       throw error;
     }
     try {
-      const result=await this.db.query<{shopName:string;contactPhone:string|null;contactEmail:string|null;timeZone:string;
+      const result=await this.db.query<{shopName:string;address:string|null;officeContactPhone:string|null;technicalContactPhone:string|null;contactEmail:string|null;timeZone:string;
         phoneIntakeEnabled:boolean;walkInIntakeEnabled:boolean;colorTheme:OrganizationColorTheme;
-        logoBase64:string|null;logoContentType:string|null}>(`UPDATE tenants SET name=$2,contact_phone=$3,contact_email=$4,time_zone=$5,
-        phone_intake_enabled=$6,walk_in_intake_enabled=$7,color_theme=COALESCE($8,color_theme)
+        logoBase64:string|null;logoContentType:string|null}>(`UPDATE tenants SET name=$2,address=$3,contact_phone=$4,
+        technical_contact_phone=$5,contact_email=$6,time_zone=$7,phone_intake_enabled=$8,
+        walk_in_intake_enabled=$9,color_theme=COALESCE($10,color_theme)
         WHERE id=$1
-        RETURNING name AS "shopName",contact_phone AS "contactPhone",contact_email AS "contactEmail",
+        RETURNING name AS "shopName",address,contact_phone AS "officeContactPhone",
+          technical_contact_phone AS "technicalContactPhone",contact_email AS "contactEmail",
           time_zone AS "timeZone",phone_intake_enabled AS "phoneIntakeEnabled",walk_in_intake_enabled AS "walkInIntakeEnabled",
           color_theme AS "colorTheme",
           encode(logo,'base64') AS "logoBase64",logo_content_type AS "logoContentType"`,
-      [req.user.tenantId,shopName,body.contactPhone?.trim()||null,body.contactEmail?.trim().toLowerCase()||null,timeZone,body.phoneIntakeEnabled,body.walkInIntakeEnabled,body.colorTheme||null]);
+      [req.user.tenantId,shopName,address,body.officeContactPhone?.trim()||null,
+        body.technicalContactPhone?.trim()||null,body.contactEmail?.trim().toLowerCase()||null,timeZone,
+        body.phoneIntakeEnabled,body.walkInIntakeEnabled,body.colorTheme||null]);
       if(!result.rowCount) throw new BadRequestException('Organization was not found.');
       const {logoBase64,logoContentType,...settings}=result.rows[0];
       return {...settings,logoDataUrl:logoBase64&&logoContentType?`data:${logoContentType};base64,${logoBase64}`:null};

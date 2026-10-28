@@ -25,9 +25,8 @@ export class OrganizationLocationsController {
 
   @Get()
   async list(@Req() req:UserRequest,@Query('includeInactive') includeInactive?:string,@Query('search') search?:string,@Query('page') page?:string,@Query('pageSize') pageSize?:string){
-    const canManage=hasPermission(req.user,'settings.manage');
-    if(!hasPermission(req.user,'jobs.create')&&!canManage) requirePermission(req.user,'jobs.create');
-    const showInactive=includeInactive==='true'&&canManage;
+    requirePermission(req.user,'locations.read');
+    const showInactive=includeInactive==='true'&&hasPermission(req.user,'locations.manage');
     const pagination=parsePagination(page,pageSize);
     const values:unknown[]=[req.user.tenantId];
     let where=`tenant_id=$1${showInactive?'':' AND active=true'}`;
@@ -41,7 +40,7 @@ export class OrganizationLocationsController {
 
   @Post()
   async create(@Req() req:UserRequest,@Body() body:OrganizationLocationDto){
-    requirePermission(req.user,'settings.manage');
+    requirePermission(req.user,'locations.manage');
     const name=body.name.trim(),address=body.address.trim();
     if(!name||!address) throw new BadRequestException('Enter a location name and address.');
     const result=await this.db.query(`INSERT INTO organization_locations(tenant_id,name,address)
@@ -52,7 +51,7 @@ export class OrganizationLocationsController {
 
   @Patch(':locationId')
   async update(@Req() req:UserRequest,@Param('locationId') locationId:string,@Body() body:UpdateOrganizationLocationDto){
-    requirePermission(req.user,'settings.manage');
+    requirePermission(req.user,'locations.manage');
     if(body.name===undefined&&body.address===undefined&&body.active===undefined){
       throw new BadRequestException('Provide location details or an active state to update.');
     }
