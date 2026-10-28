@@ -1,0 +1,254 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1720 >>
+stream
+1.000 1.000 1.000 rg 0 0 612 792 re f
+0.120 0.430 0.340 rg 0 781 612 11 re f
+BT /F2 8 Tf 0.120 0.430 0.340 rg 46 747 Td (MANITO  /  DEPLOYMENT GUIDE) Tj ET
+BT /F2 27 Tf 0.070 0.160 0.190 rg 46 710 Td (Push your changes) Tj ET
+BT /F1 10 Tf 0.350 0.420 0.390 rg 46 689 Td (Run checks, stage reviewed files, then push main.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 652 Td (01  Run checks) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 631 Td (Open PowerShell in the project root and run the checks before publishing.) Tj ET
+0.960 0.970 0.960 rg 46 432 520 186 re f
+0.120 0.430 0.340 rg 46 432 4 186 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 604 Td (git status --short) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 590 Td (git diff --check) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 562 Td (Set-Location api) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 548 Td (npm test) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 534 Td (npm run test:types) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 520 Td (npm run build) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 492 Td (Set-Location ..\\web) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 478 Td (npm run build) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 450 Td (Set-Location ..) Tj ET
+1.000 0.960 0.910 rg 46 377 520 46 re f
+0.750 0.360 0.120 rg 46 377 4 46 re f
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 409 Td (Do not open, print, stage, or commit .env. It contains private configuration and) Tj ET
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 395 Td (should remain ignored by Git.) Tj ET
+0.830 0.880 0.850 RG 0.7 w 46 38 m 566 38 l S
+BT /F1 7 Tf 0.350 0.420 0.390 rg 46 23 Td (Manito  |  Push safely. Deploy frontend and backend. Verify production.) Tj ET
+BT /F1 7 Tf 0.350 0.420 0.390 rg 545 23 Td (1 / 5) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2608 >>
+stream
+1.000 1.000 1.000 rg 0 0 612 792 re f
+0.120 0.430 0.340 rg 0 781 612 11 re f
+BT /F2 8 Tf 0.120 0.430 0.340 rg 46 747 Td (MANITO  /  DEPLOYMENT GUIDE) Tj ET
+BT /F2 27 Tf 0.070 0.160 0.190 rg 46 710 Td (Stage, review, and push) Tj ET
+BT /F1 10 Tf 0.350 0.420 0.390 rg 46 689 Td (Commit only the intended changes to the configured GitHub origin.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 652 Td (02  Stage and review) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 631 Td (This file list matches the current changes. Adjust it if your git status is different.) Tj ET
+0.960 0.970 0.960 rg 46 446 520 172 re f
+0.120 0.430 0.340 rg 46 446 4 172 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 604 Td (git add README.md SRS.md api/src/authorization.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 590 Td (  api/src/contractors.controller.ts api/src/database.service.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 576 Td (  api/src/jobs.controller.ts api/src/organization-locations.controller.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 562 Td (  api/src/organization-settings.controller.ts api/src/permissions.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 548 Td (  api/tests/jobs.controller.test.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 534 Td (  api/tests/organization-settings.controller.test.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 520 Td (  api/tests/permissions.test.ts `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 506 Td (  web/src/App.tsx web/src/print.css web/src/theme.css) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 478 Td (git diff --cached --check) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 464 Td (git diff --cached --name-only) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 432 Td (Review the staged filenames and changes. Confirm .env is not listed before committing.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 404 Td (03  Commit and push) Tj ET
+0.960 0.970 0.960 rg 46 314 520 74 re f
+0.120 0.430 0.340 rg 46 314 4 74 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 374 Td (git commit -m "Improve work order scheduling and printing" `) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 360 Td (  -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>") Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 332 Td (git push origin main) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 300 Td (If git reports there is nothing to commit, inspect git status before continuing.) Tj ET
+0.830 0.880 0.850 RG 0.7 w 46 38 m 566 38 l S
+BT /F1 7 Tf 0.350 0.420 0.390 rg 46 23 Td (Manito  |  Push safely. Deploy frontend and backend. Verify production.) Tj ET
+BT /F1 7 Tf 0.350 0.420 0.390 rg 545 23 Td (2 / 5) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 3384 >>
+stream
+1.000 1.000 1.000 rg 0 0 612 792 re f
+0.120 0.430 0.340 rg 0 781 612 11 re f
+BT /F2 8 Tf 0.120 0.430 0.340 rg 46 747 Td (MANITO  /  DEPLOYMENT GUIDE) Tj ET
+BT /F2 27 Tf 0.070 0.160 0.190 rg 46 710 Td (Deploy the frontend) Tj ET
+BT /F1 10 Tf 0.350 0.420 0.390 rg 46 689 Td (Cloudflare Pages builds the static React app from GitHub main.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 652 Td (01  Automatic deployment) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 631 Td (If Cloudflare Pages is connected to this GitHub repository, pushing to main starts a) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 618 Td (production deployment. Open the Pages project and check the latest deployment status and build) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 605 Td (log.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 577 Td (02  Confirm build settings) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 555 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 556 Td (Production branch: main) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 536 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 537 Td (Root directory: web) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 517 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 518 Td (Build command: npm run build) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 498 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 499 Td (Build output directory: dist) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 479 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 480 Td (Node.js: 22) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 451 Td (03  Configure the API URL) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 430 Td (In Pages project settings, add the following build variable. Redeploy after changing it.) Tj ET
+0.960 0.970 0.960 rg 46 385 520 32 re f
+0.120 0.430 0.340 rg 46 385 4 32 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 403 Td (VITE_API_BASE_URL=https://your-public-api.example.com) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 370 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 371 Td (Use the public HTTPS API origin only; no /api/v1 path and no trailing slash.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 351 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 352 Td (This value is embedded in the public frontend bundle. Never put passwords, tokens, or) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 338 Td (other secrets in it.) Tj ET
+1.000 0.960 0.910 rg 46 278 520 46 re f
+0.750 0.360 0.120 rg 46 278 4 46 re f
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 310 Td (An HTTPS Pages site cannot safely call an HTTP API. The API must be publicly) Tj ET
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 296 Td (reachable over HTTPS.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 255 Td (04  Configure CORS) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 234 Td (After Cloudflare provides the Pages URL, set CORS_ORIGIN on the API server to that exact) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 221 Td (origin, such as https://your-project.pages.dev. Restart or redeploy the API after changing it.) Tj ET
+1.000 0.960 0.910 rg 46 176 520 32 re f
+0.750 0.360 0.120 rg 46 176 4 32 re f
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 194 Td (Keep PostgreSQL private. Do not expose port 5432 to the public internet.) Tj ET
+0.830 0.880 0.850 RG 0.7 w 46 38 m 566 38 l S
+BT /F1 7 Tf 0.350 0.420 0.390 rg 46 23 Td (Manito  |  Push safely. Deploy frontend and backend. Verify production.) Tj ET
+BT /F1 7 Tf 0.350 0.420 0.390 rg 545 23 Td (3 / 5) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 2950 >>
+stream
+1.000 1.000 1.000 rg 0 0 612 792 re f
+0.120 0.430 0.340 rg 0 781 612 11 re f
+BT /F2 8 Tf 0.120 0.430 0.340 rg 46 747 Td (MANITO  /  DEPLOYMENT GUIDE) Tj ET
+BT /F2 27 Tf 0.070 0.160 0.190 rg 46 710 Td (Deploy the backend) Tj ET
+BT /F1 10 Tf 0.350 0.420 0.390 rg 46 689 Td (The API and PostgreSQL run on the backend server using Docker Compose.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 652 Td (01  Update the server checkout) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 631 Td (Connect to the backend server and open PowerShell in the project directory. Keep the server) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 618 Td (production .env in place; do not copy your local .env over it.) Tj ET
+0.960 0.970 0.960 rg 46 573 520 32 re f
+0.120 0.430 0.340 rg 46 573 4 32 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 591 Td (git pull origin main) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 549 Td (02  Rebuild and restart) Tj ET
+0.960 0.970 0.960 rg 46 487 520 46 re f
+0.120 0.430 0.340 rg 46 487 4 46 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 519 Td (docker compose -f compose.yaml up --build -d) Tj ET
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 505 Td (docker compose -f compose.yaml ps) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 473 Td (Compose rebuilds the app image and starts services in the background. PostgreSQL data is) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 460 Td (stored in the pgdata volume.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 432 Td (03  Check health) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 411 Td (Open the health endpoint through the public HTTPS API origin:) Tj ET
+0.960 0.970 0.960 rg 46 366 520 32 re f
+0.120 0.430 0.340 rg 46 366 4 32 re f
+BT /F3 8 Tf 0.070 0.160 0.190 rg 60 384 Td (https://your-public-api.example.com/api/v1/health) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 351 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 352 Td (Confirm the API responds successfully.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 332 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 333 Td (Confirm the database service is healthy in docker compose ps.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 304 Td (Protect production data) Tj ET
+1.000 0.960 0.910 rg 46 242 520 46 re f
+0.750 0.360 0.120 rg 46 242 4 46 re f
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 274 Td (Never run docker compose down -v during an update. The -v option removes volumes and) Tj ET
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 260 Td (can delete PostgreSQL data.) Tj ET
+1.000 0.960 0.910 rg 46 188 520 46 re f
+0.750 0.360 0.120 rg 46 188 4 46 re f
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 220 Td (Do not expose PostgreSQL port 5432 publicly. Use strong production credentials and) Tj ET
+BT /F2 9 Tf 0.120 0.170 0.160 rg 60 206 Td (JWT secrets on the server.) Tj ET
+0.830 0.880 0.850 RG 0.7 w 46 38 m 566 38 l S
+BT /F1 7 Tf 0.350 0.420 0.390 rg 46 23 Td (Manito  |  Push safely. Deploy frontend and backend. Verify production.) Tj ET
+BT /F1 7 Tf 0.350 0.420 0.390 rg 545 23 Td (4 / 5) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 3139 >>
+stream
+1.000 1.000 1.000 rg 0 0 612 792 re f
+0.120 0.430 0.340 rg 0 781 612 11 re f
+BT /F2 8 Tf 0.120 0.430 0.340 rg 46 747 Td (MANITO  /  DEPLOYMENT GUIDE) Tj ET
+BT /F2 27 Tf 0.070 0.160 0.190 rg 46 710 Td (Verify the deployment) Tj ET
+BT /F1 10 Tf 0.350 0.420 0.390 rg 46 689 Td (Test production after the frontend and backend are both updated.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 652 Td (01  Smoke-test the app) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 630 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 631 Td (Open the Cloudflare Pages site and sign in.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 611 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 612 Td (Create a test work order; confirm its success message and job reference.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 592 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 593 Td (Open the work order, set its Planned work date, and save.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 573 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 574 Td (Open Schedule and verify it appears in the selected week.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 554 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 555 Td (Print a work order and check the suggested PDF name includes its number.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 526 Td (If frontend cannot reach the API) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 504 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 505 Td (Check VITE_API_BASE_URL is the correct HTTPS API origin, with no path or trailing) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 491 Td (slash.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 471 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 472 Td (Check CORS_ORIGIN exactly matches the deployed Pages origin, including https://.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 452 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 453 Td (Redeploy Pages after changing a frontend build variable.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 433 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 434 Td (Rebuild/restart the API after changing CORS_ORIGIN or backend code.) Tj ET
+BT /F2 10 Tf 0.120 0.430 0.340 rg 54 414 Td (-) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 68 415 Td (Confirm the API health endpoint responds over HTTPS.) Tj ET
+BT /F2 13 Tf 0.120 0.430 0.340 rg 46 386 Td (Deployment split) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 365 Td (Cloudflare Pages hosts only the static frontend. Keep the API and PostgreSQL running on the) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 352 Td (backend server. A push can trigger the Pages build automatically, but backend deployment is a) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 339 Td (separate step.) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 321 Td (See README.md for repository deployment notes. Dockerfile builds the container; compose.yaml) Tj ET
+BT /F1 9 Tf 0.120 0.170 0.160 rg 46 308 Td (configures the local/server stack.) Tj ET
+0.830 0.880 0.850 RG 0.7 w 46 38 m 566 38 l S
+BT /F1 7 Tf 0.350 0.420 0.390 rg 46 23 Td (Manito  |  Push safely. Deploy frontend and backend. Verify production.) Tj ET
+BT /F1 7 Tf 0.350 0.420 0.390 rg 545 23 Td (5 / 5) Tj ET
+endstream
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000148 00000 n 
+0000000218 00000 n 
+0000000293 00000 n 
+0000000361 00000 n 
+0000000507 00000 n 
+0000002279 00000 n 
+0000002425 00000 n 
+0000005085 00000 n 
+0000005233 00000 n 
+0000008670 00000 n 
+0000008818 00000 n 
+0000011821 00000 n 
+0000011969 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+15161
+%%EOF
